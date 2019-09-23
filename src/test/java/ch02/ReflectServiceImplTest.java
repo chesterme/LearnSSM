@@ -32,11 +32,32 @@ public class ReflectServiceImplTest {
         return returnObj;
     }
 
+    public Object reflect(){
+        ReflectServiceImpl object = null;
+        try{
+            object = (ReflectServiceImpl)Class.forName("ch02.ReflectServiceImpl").newInstance();
+            Method method = object.getClass().getMethod("sayHello", String.class);
+            method.invoke(object, "李四");
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return object;
+    }
+
     public static void main(String[] args){
         ReflectServiceImplTest test = new ReflectServiceImplTest();
         ReflectServiceImpl instance = test.getInstance();
         instance.sayHello("张三");
         test.reflectMethod();
+        Object obj = test.reflect();
     }
 
 }
