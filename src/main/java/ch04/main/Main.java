@@ -16,7 +16,7 @@ public class Main {
             sqlSession = SqlSessionFactoryUtils.openSqlSession();
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             User user = userMapper.getUser(1L);
-            log.info(user.getSex().getId());
+            log.info(user.getSex().getName());
         }finally{
             if(sqlSession != null){
                 sqlSession.close();
