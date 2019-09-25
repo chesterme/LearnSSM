@@ -1,4 +1,12 @@
 package ch03.mapper;
 
-public class RoleMapper {
+import ch03.pojo.Role;
+
+public interface RoleMapper {
+    /**
+     * 从Role表中根据id选择对应的Role
+     * @param id
+     * @return
+     */
+    Role getRole(Long id);
 }
