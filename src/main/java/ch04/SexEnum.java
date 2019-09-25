@@ -32,7 +32,7 @@ public enum SexEnum {
         this.name = name;
     }
 
-    public SexEnum getSexById(int id){
+    public static SexEnum getSexById(int id){
         for(SexEnum sex : SexEnum.values()){
             System.out.println("getId: " + sex.getId());
             if(sex.getId() == id){
