@@ -12,6 +12,7 @@
     <typeAliases>
         <!-- 别名 -->
         <typeAlias alias="role" type="ch03.pojo.Role"/>
+        <typeAlias alias="user" type="ch04.pojo.User"/>
     </typeAliases>
     <!-- 类型处理器 -->
     <typeHandlers>
@@ -32,5 +33,6 @@
     <!-- 映射文件 -->
     <mappers>
         <mapper resource="ch03/mapper/RoleMapper.xml"/>
+        <mapper resource="ch04/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
