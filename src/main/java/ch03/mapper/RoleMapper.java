@@ -3,6 +3,7 @@ package ch03.mapper;
 import ch03.pojo.Role;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RoleMapper {
     /**
@@ -39,4 +40,11 @@ public interface RoleMapper {
      * @return
      */
     List<Role> findRoles(String roleName);
+
+    /**
+     * 可以通过多个参数进行查询
+     * @param parameterMap
+     * @return
+     */
+    List<Role> findRolesByMap(Map<String, Object> parameterMap);
 }
