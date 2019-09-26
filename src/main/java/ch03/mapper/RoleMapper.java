@@ -4,6 +4,7 @@ import ch03.pojo.Role;
 import ch05.bean.PageParams;
 import ch05.bean.RoleParams;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 import java.util.Map;
@@ -56,4 +57,6 @@ public interface RoleMapper {
     List<Role> findRolesByBean(RoleParams roleParams);
 
     List<Role> findByMix(@Param("params") RoleParams roleParams, @Param("page") PageParams pageParams);
+
+    List<Role> findByRowBounds(@Param("note") String note, RowBounds rowBounds);
 }

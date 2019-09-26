@@ -5,6 +5,7 @@ import ch03.pojo.Role;
 import ch03.utils.SqlSessionFactoryUtils;
 import ch05.bean.PageParams;
 import ch05.bean.RoleParams;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -45,6 +46,12 @@ public class Main {
             RoleParams roleParams = new RoleParams();
             roleParams.setNote("计算机专业学生");
             roles = roleMapper.findByMix(roleParams, new PageParams(4, 10));
+            for(int i = 0; i < roles.size(); i++){
+                System.out.println("index: " + i + ", roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
+            }
+
+            System.out.println("++++++++++++++++++++++++++");
+            roles = roleMapper.findByRowBounds("计算机专业学生", new RowBounds());
             for(int i = 0; i < roles.size(); i++){
                 System.out.println("index: " + i + ", roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
             }
