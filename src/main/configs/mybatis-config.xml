@@ -18,6 +18,10 @@
     <typeHandlers>
         <typeHandler handler="ch04.handler.MyTypeHandler" javaType="string" jdbcType="VARCHAR"/>
     </typeHandlers>
+    <!-- 对象工厂 -->
+    <objectFactory type="ch04.factory.MyObjectFactory">
+        <property name="prop1" value="value1"/>
+    </objectFactory>
     <!-- 数据库环境 -->
     <environments default="development">
         <environment id="development">
