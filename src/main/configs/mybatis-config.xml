@@ -34,5 +34,6 @@
     <mappers>
         <mapper resource="ch03/mapper/RoleMapper.xml"/>
         <mapper resource="ch04/mapper/UserMapper.xml"/>
+        <mapper resource="ch04/mapper/FileMapper.xml"/>
     </mappers>
 </configuration>

@@ -42,6 +42,7 @@ public class JDBCTools {
         }
 
     }
+
     public static void release(ResultSet rs , Connection con , Statement state){//关闭数据库连接
         if(rs != null)
         {

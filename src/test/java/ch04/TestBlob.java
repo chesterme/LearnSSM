@@ -24,7 +24,7 @@ public class TestBlob {
                 String name = rs.getString(1);
                 int age = rs.getInt(2);
 
-                Blob picture = rs.getBlob(3);//得到Blob对象
+                Blob picture = rs.getBlob(3); //得到Blob对象
                 //开始读入文件
                 InputStream in = picture.getBinaryStream();
                 OutputStream out = new FileOutputStream("outputCat.jpg");

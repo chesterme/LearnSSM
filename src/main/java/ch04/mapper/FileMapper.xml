@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch04.mapper.FileMapper">
+    <resultMap id="file" type="ch04.pojo.TestFile">
+        <id column="id" property="id"/>
+        <result column="content" property="content" typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>
+    </resultMap>
+    <select id="getFile" parameterType="long" resultMap="file">
+        select id, content from t_file where id = #{id}
+    </select>
+    <insert id="insertFile" parameterType="ch04.pojo.TestFile">
+        insert into t_file(content) values (#{content})
+    </insert>
+</mapper>
