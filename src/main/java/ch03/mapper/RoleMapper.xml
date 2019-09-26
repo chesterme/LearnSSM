@@ -10,11 +10,19 @@
         <result property="note" column="note" typeHandler="ch04.handler.MyTypeHandler"/>
     </resultMap>
 
+    <sql id="roleCols">
+        id, role_name, note
+    </sql>
+
+    <sql id="roleCols2">
+        ${alias}.id, ${alias}.role_name, ${alias}.note
+    </sql>
+
     <select id="getRole" parameterType="long" resultMap="roleMapper">
-        select id, role_name, note from t_role where id = #{id}
+        select <include refid="roleCols"/> from t_role where id = #{id}
     </select>
 
-    <insert id="insertRole" parameterType="role">
+    <insert id="insertRole" parameterType="role" useGeneratedKeys="true" keyProperty="id">
         insert into t_role(role_name, note) values(#{roleName}, #{note})
     </insert>
     <delete id="deleteRole" parameterType="Long">
@@ -26,7 +34,11 @@
     </update>
 
     <select id="findRoles" parameterType="string" resultMap="roleMapper">
-        select id, role_name, note from t_role
+        select
+        <include refid="roleCols2">
+            <property name="alias" value="r"/>
+        </include>
+        from t_role r
         where role_name like concat('%', #{roleName, jdbcType=VARCHAR, javaType=string}, '%')
     </select>
 

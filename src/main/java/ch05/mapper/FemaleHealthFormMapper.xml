@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.FemaleHealthFormMapper">
+    <select id="getByEmpId" parameterType="long" resultType="FemaleHealthForm">
+        select id, heart, liver, spleen, lung, kidney, note, uterus
+        from t_female_health_form
+        where emp_id = #{empId}
+    </select>
+    <insert id="insert" parameterType="ch05.pojo.FemaleHealthForm">
+        insert into t_female_health_form(heart, liver, spleen, lung, kidney, note, uterus, emp_id)
+        values(#{heart}, #{liver}, #{spleen}, #{lung}, #{kidney}, #{note}, #{uterus}, #{empId})
+    </insert>
+</mapper>

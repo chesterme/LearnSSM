@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.WorkCardMapper">
+    <sql id="columns">
+        emp_id as empId, real_name as realName, department, mobile, position, note
+    </sql>
+
+    <insert id="insert" parameterType="WorkCard" useGeneratedKeys="true">
+        insert into t_work_card(emp_id, real_name, department, mobile, position, note)
+        values(#{empId}, #{realName}, #{department}, #{mobile}, #{position}, #{note})
+    </insert>
+
+    <select id="getById" parameterType="long" resultType="WorkCard">
+        select id, <include refid="columns"></include>
+        from t_work_card
+        where id = #{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.EmployeeMapper">
+    <resultMap id="employee" type="ch05.pojo.Employee">
+        <id property="id" column="id"/>
+        <result property="realName" column="real_name"/>
+        <result property="sex" column="sex" typeHandler="ch04.handler.SexEnumTypeHandler"/>
+        <result property="birthday" column="birthday"/>
+        <result property="mobile" column="mobile"/>
+        <result property="email" column="email"/>
+        <result property="position" column="position"/>
+        <result property="note" column="note"/>
+        <!-- 对工牌进行一对一级联，property对应Employee类中的属性，column对应sql的列，它作为参数传递给select对应的sql语句中 -->
+        <association property="workCard" column="id" select="ch05.mapper.WorkCardMapper.getById"/>
+        <!-- 对工作任务进行一对多级联，property对应Employee类中的属性，column对应sql的列，它作为参数传递给select对应的sql语句中 -->
+        <collection property="employeeTaskList" column="id" select="ch05.mapper.EmployeeTaskMapper.getById"/>
+        <!-- 鉴别器，column表示使用哪个字段进行鉴别，resultMap表示采用哪个结果集进行映射 -->
+        <discriminator javaType="long" column="sex">
+            <case value="1" resultMap="maleHealthFormMapper"/>
+            <case value="2" resultMap="femaleHealthFormMapper"/>
+        </discriminator>
+    </resultMap>
+
+    <resultMap id="femaleHealthFormMapper" type="femaleEmployee" extends="employee">
+        <association property="femaleHealthForm" column="id" select="ch05.mapper.FemaleHealthFormMapper.getById"/>
+    </resultMap>
+
+    <resultMap id="maleHealthFormMapper" type="maleEmployee" extends="employee">
+        <association property="maleHealthForm" column="id" select="ch05.mapper.MaleHealthFormMapper.getById"/>
+    </resultMap>
+
+    <select id="getById" parameterType="long" resultMap="employee">
+        select id, real_name as realName, sex, birthday, mobile, email, position, note
+        from t_employee
+        where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="ch05.pojo.Employee">
+        insert into t_employee(real_name, sex, birthday, mobile, email, position, note)
+        values(#{realName}, #{sex, jdbcType=INTEGER, javaType=ch04.SexEnum, typeHandler=ch04.handler.SexEnumTypeHandler}, #{birthday}, #{mobile}, #{email}, #{position}, #{note})
+    </insert>
+</mapper>

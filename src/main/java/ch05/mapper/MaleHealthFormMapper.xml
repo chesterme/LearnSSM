@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.MaleHealthFormMapper">
+    <insert id="insert" parameterType="MaleHealthForm">
+        insert into t_male_health_form(emp_id, heart, liver, spleen, lung, kidney, note, prostate)
+        values(#{empId}, #{heart}, #{liver}, #{spleen}, #{lung}, #{kidney}, #{note}, #{prostate})
+    </insert>
+    <select id="getByEmpId" parameterType="long" resultType="MaleHealthForm">
+        select id, heart, liver, spleen, lung, kidney, note, prostate, emp_id as empId
+        from t_male_health_form
+        where emp_id = #{empId}
+    </select>
+</mapper>

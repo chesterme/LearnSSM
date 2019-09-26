@@ -13,6 +13,7 @@
         <!-- 别名 -->
         <typeAlias alias="role" type="ch03.pojo.Role"/>
         <typeAlias alias="user" type="ch04.pojo.User"/>
+        <package name="ch05.pojo"/>
     </typeAliases>
     <!-- 类型处理器 -->
     <typeHandlers>
@@ -49,5 +50,6 @@
         <mapper resource="ch03/mapper/RoleMapper.xml"/>
         <mapper resource="ch04/mapper/UserMapper.xml"/>
         <mapper resource="ch04/mapper/FileMapper.xml"/>
+        <package name="ch05.mapper"/>
     </mappers>
 </configuration>

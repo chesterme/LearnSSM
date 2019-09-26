@@ -55,6 +55,12 @@ public class Main {
             for(int i = 0; i < roles.size(); i++){
                 System.out.println("index: " + i + ", roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
             }
+
+            role.setRoleName("test name");
+            role.setNote("test note");
+            roleMapper.insertRole(role);
+            sqlSession.commit();
+            System.out.println("id: " + role.getId());
         }finally{
             if(sqlSession != null){
                 sqlSession.close();

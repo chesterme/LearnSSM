@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.TaskMapper">
+    <sql id="columns">
+        id, title, context, note
+    </sql>
+    <select id="getById" parameterType="long" resultType="ch05.pojo.Task">
+        select <include refid="columns"/>
+        from t_task
+        where id = #{id}
+    </select>
+    <insert id="insert" parameterType="ch05.pojo.Task">
+        insert into t_task(title, context, note)
+        values(#{title}, #{context}, #{note})
+    </insert>
+</mapper>

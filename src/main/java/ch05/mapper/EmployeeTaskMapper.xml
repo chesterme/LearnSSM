@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.EmployeeTaskMapper">
+    <resultMap id="employeeTask" type="ch05.pojo.EmployeeTask">
+        <id column="id" property="id"/>
+        <result column="emp_id" property="empId"/>
+        <result column="task_name" property="taskName"/>
+        <result column="note" property="note"/>
+        <!-- property:映射到pojo中的属性中，column：映射到子查询使用的参数 -->
+        <association property="task" column="task_id" select="ch05.mapper.TaskMapper.getById"/>
+    </resultMap>
+
+    <sql id="columns">
+        id, emp_id, task_name, note, task_id
+    </sql>
+
+    <select id="getById" parameterType="long" resultMap="employeeTask">
+        select id, emp_id, task_name, task_id, note
+        from t_employee_task
+        where emp_id = #{empId}
+    </select>
+
+    <insert id="insert" parameterType="EmployeeTask">
+        insert into t_employee_task(emp_id, task_name, note, task_id)
+        values (#{empId}, #{taskName}, #{note}, #{task.id})
+    </insert>
+</mapper>
