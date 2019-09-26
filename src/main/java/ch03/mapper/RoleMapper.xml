@@ -40,4 +40,22 @@
         where role_name like concat('%', #{roleName}, '%')
         and note like concat('%', #{note}, '%')
     </select>
+
+    <select id="findRolesByAnnotation" resultType="role">
+        select id, role_name as roleName, note from t_role
+        where role_name like concat('%', #{roleName}, '%')
+        and note like concat('%', #{note}, '%')
+    </select>
+
+    <select id="findRolesByBean" resultType="role" parameterType="ch05.bean.RoleParams">
+        select id, role_name as roleName, note from t_role
+        where role_name like concat('%', #{roleName}, '%')
+        and note like concat('%', #{note}, '%')
+    </select>
+
+    <select id="findByMix" resultType="role">
+        select id, role_name as roleName, note from t_role
+        where note like concat('%', #{params.note}, '%')
+        limit #{page.start}, #{page.limit}
+    </select>
 </mapper>

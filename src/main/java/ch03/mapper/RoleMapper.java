@@ -1,6 +1,9 @@
 package ch03.mapper;
 
 import ch03.pojo.Role;
+import ch05.bean.PageParams;
+import ch05.bean.RoleParams;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -47,4 +50,10 @@ public interface RoleMapper {
      * @return
      */
     List<Role> findRolesByMap(Map<String, Object> parameterMap);
+
+    List<Role> findRolesByAnnotation(@Param("roleName") String roleName, @Param("note") String note);
+
+    List<Role> findRolesByBean(RoleParams roleParams);
+
+    List<Role> findByMix(@Param("params") RoleParams roleParams, @Param("page") PageParams pageParams);
 }

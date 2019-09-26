@@ -3,6 +3,8 @@ package ch03.main;
 import ch03.mapper.RoleMapper;
 import ch03.pojo.Role;
 import ch03.utils.SqlSessionFactoryUtils;
+import ch05.bean.PageParams;
+import ch05.bean.RoleParams;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -28,6 +30,23 @@ public class Main {
             List<Role> roles = roleMapper.findRolesByMap(parameterMap);
             for(int i = 0; i < roles.size(); i++){
                 System.out.println("roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
+            }
+
+            roles = roleMapper.findRolesByAnnotation("张三", "计算机专业学生");
+            for(int i = 0; i < roles.size(); i++){
+                System.out.println("roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
+            }
+
+            roles = roleMapper.findRolesByBean(new RoleParams("张三", "计算机专业学生"));
+            for(int i = 0; i < roles.size(); i++){
+                System.out.println("roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
+            }
+
+            RoleParams roleParams = new RoleParams();
+            roleParams.setNote("计算机专业学生");
+            roles = roleMapper.findByMix(roleParams, new PageParams(4, 10));
+            for(int i = 0; i < roles.size(); i++){
+                System.out.println("index: " + i + ", roleName：" + roles.get(i).getRoleName() + ", note: " + roles.get(i).getNote());
             }
         }finally{
             if(sqlSession != null){
