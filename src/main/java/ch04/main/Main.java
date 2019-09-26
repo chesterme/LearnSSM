@@ -28,22 +28,22 @@ public class Main {
             TestFile file = new TestFile();
 
             // 测试往数据库中写入图片
-            FileInputStream in = new FileInputStream(new File("cat.jpg"));
-            byte[] content = new byte[in.available()];
-            in.read(content);
-            file.setContent(content);
-            fileMapper.insertFile(file);
-            sqlSession.commit();
+//            FileInputStream in = new FileInputStream(new File("cat.jpg"));
+//            byte[] content = new byte[in.available()];
+//            in.read(content);
+//            file.setContent(content);
+//            fileMapper.insertFile(file);
+//            sqlSession.commit();
 
 
             // 测试从数据库中获取图片
-//            file = fileMapper.getFile(28L);
-//            File output = new File("output.jpg");
-//            if(!output.exists()){
-//                output.createNewFile();
-//            }
-//            FileOutputStream out = new FileOutputStream(output);
-//            out.write(file.getContent());
+            file = fileMapper.getFile(28L);
+            File output = new File("output.jpg");
+            if(!output.exists()){
+                output.createNewFile();
+            }
+            FileOutputStream out = new FileOutputStream(output);
+            out.write(file.getContent());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

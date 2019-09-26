@@ -34,6 +34,16 @@
             </dataSource>
         </environment>
     </environments>
+    <!-- 数据库厂商标识 -->
+<!--    <databaseIdProvider type="DB_VENDOR">-->
+<!--        <property name="Oracle" value="oracle"/>-->
+<!--        <property name="MySQL" value="mysql"/>-->
+<!--        <property name="DB2" value="db2"/>-->
+<!--    </databaseIdProvider>-->
+    <databaseIdProvider type="ch04.provider.MyDatabaseIdProvider">
+        <property name="msg" value="自定义DatabaseIdProvider"/>
+    </databaseIdProvider>
+
     <!-- 映射文件 -->
     <mappers>
         <mapper resource="ch03/mapper/RoleMapper.xml"/>
