@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ch05.mapper.Role2Mapper">
+    <!-- 开启二级缓存 -->
+    <cache/>
     <resultMap id="role" type="ch05.pojo.Role2">
         <id property="id" column="id"/>
         <result property="roleName" column="role_name"/>

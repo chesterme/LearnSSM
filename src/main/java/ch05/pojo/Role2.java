@@ -1,12 +1,14 @@
 package ch05.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 角色
  */
-public class Role2 {
+public class Role2 implements Serializable {
 
+    private static final long serialVersionUID = -7092020626288288507L;
     private Long id;
     private String roleName;
     private String note;

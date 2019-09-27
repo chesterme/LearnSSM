@@ -7,13 +7,15 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 /**
  * 一个工具类，用于创建SqlSessionFactory和获取SqlSession对象
  */
-public class SqlSessionFactoryUtils {
+public class SqlSessionFactoryUtils implements Serializable {
 
     private final static Class<SqlSessionFactoryUtils> LOCK = SqlSessionFactoryUtils.class;
+    private static final long serialVersionUID = -237185279116689793L;
     private static SqlSessionFactory sqlSessionFactory = null;
 
     private SqlSessionFactoryUtils(){}

@@ -2,10 +2,12 @@ package ch05.pojo;
 
 import ch04.SexEnum;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User2 {
+public class User2 implements Serializable {
 
+    private static final long serialVersionUID = -60447815418677824L;
     private Long id;
     private String userName;
     private String realName;

@@ -1,9 +1,11 @@
 package ch04;
 
+import java.io.Serializable;
+
 /**
  * 性别枚举类
  */
-public enum SexEnum {
+public enum SexEnum{
     MALE(1, "男"), FEMALE(0, "女");
 
     private int id;

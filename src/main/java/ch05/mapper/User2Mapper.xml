@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ch05.mapper.User2Mapper">
+    <!-- 开启二级缓存 -->
+    <cache/>
     <resultMap id="user" type="ch05.pojo.User2">
         <id property="id" column="id"/>
         <result property="userName" column="user_name"/>

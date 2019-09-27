@@ -3,6 +3,7 @@ package ch04.factory;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.log4j.Logger;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
 
@@ -10,10 +11,10 @@ import java.util.Properties;
  * 自定义对象工厂
  * mybatis会使用对象工厂来创建结果集实例
  */
-public class MyObjectFactory extends DefaultObjectFactory {
+public class MyObjectFactory extends DefaultObjectFactory{
 
-    private static final long serialVersionUID = -885122346740914948L;
-    Logger log = Logger.getLogger(MyObjectFactory.class);
+    private static final long serialVersionUID = 2398571423004161112L;
+    private static Logger log = Logger.getLogger(MyObjectFactory.class);
     private Object temp = null;
 
     @Override
