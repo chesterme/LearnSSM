@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ch05.mapper.User2Mapper">
+    <resultMap id="user" type="ch05.pojo.User2">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="sex" column="sex" typeHandler="ch04.handler.SexEnumTypeHandler"/>
+        <result property="mobile" column="mobile"/>
+        <result property="email" column="email"/>
+        <result property="note" column="note"/>
+        <collection property="roleList" column="id" fetchType="lazy" select="ch05.mapper.Role2Mapper.getByUserId"/>
+    </resultMap>
+    <select id="getById" parameterType="long" resultMap="user">
+        select id, user_name, sex, mobile, email, note
+        from t_user2
+        where id = #{id}
+    </select>
+    <select id="getByRoleId" parameterType="long" resultMap="user">
+        select u.id, u.user_name, u.sex, u.mobile, u.email, u.note
+        from t_user2 u, t_role2 r, t_user_role ur
+        where u.id = ur.user_id and r.id = ur.role_id and r.id = #{id}
+    </select>
+</mapper>

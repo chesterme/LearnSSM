@@ -13,9 +13,9 @@
         <result property="position" column="position"/>
         <result property="note" column="note"/>
         <!-- 对工牌进行一对一级联，property对应Employee类中的属性，column对应sql的列，它作为参数传递给select对应的sql语句中 -->
-        <association property="workCard" column="id" select="ch05.mapper.WorkCardMapper.getById"/>
+        <association property="workCard" column="id" fetchType="lazy" select="ch05.mapper.WorkCardMapper.getById"/>
         <!-- 对工作任务进行一对多级联，property对应Employee类中的属性，column对应sql的列，它作为参数传递给select对应的sql语句中 -->
-        <collection property="employeeTaskList" column="id" select="ch05.mapper.EmployeeTaskMapper.getById"/>
+        <collection property="employeeTaskList" column="id" fetchType="lazy" select="ch05.mapper.EmployeeTaskMapper.getById"/>
         <!-- 鉴别器，column表示使用哪个字段进行鉴别，resultMap表示采用哪个结果集进行映射 -->
         <discriminator javaType="long" column="sex">
             <case value="1" resultMap="maleHealthFormMapper"/>
@@ -24,11 +24,11 @@
     </resultMap>
 
     <resultMap id="femaleHealthFormMapper" type="femaleEmployee" extends="employee">
-        <association property="femaleHealthForm" column="id" select="ch05.mapper.FemaleHealthFormMapper.getById"/>
+        <association property="femaleHealthForm" column="id" select="ch05.mapper.FemaleHealthFormMapper.getByEmpId"/>
     </resultMap>
 
     <resultMap id="maleHealthFormMapper" type="maleEmployee" extends="employee">
-        <association property="maleHealthForm" column="id" select="ch05.mapper.MaleHealthFormMapper.getById"/>
+        <association property="maleHealthForm" column="id" select="ch05.mapper.MaleHealthFormMapper.getByEmpId"/>
     </resultMap>
 
     <select id="getById" parameterType="long" resultMap="employee">

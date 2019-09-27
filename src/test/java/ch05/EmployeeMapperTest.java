@@ -58,7 +58,8 @@ public class EmployeeMapperTest {
 //        test.testInsert(employee);
 
         employee = test.testSelect(1L);
-        System.out.println(employee);
+        System.out.println(employee.getEmployeeTaskList().size());
+        System.out.println(employee.getWorkCard().getDepartment());
     }
 
 }

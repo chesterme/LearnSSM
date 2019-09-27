@@ -9,6 +9,13 @@
         <property name="database.username" value="test"/>
         <property name="database.password" value="123456"/>
     </properties>
+    <!-- 设置 -->
+    <settings>
+        <!-- 是否选择延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 控制是否采用层级加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     <typeAliases>
         <!-- 别名 -->
         <typeAlias alias="role" type="ch03.pojo.Role"/>
