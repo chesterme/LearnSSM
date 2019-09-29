@@ -32,7 +32,9 @@ public class SqlSessionFactoryUtils implements Serializable {
             String resource = "mybatis-config.xml";
             InputStream in;
             try{
+                // 返回资源在classpath路径上的一个输入流对象
                 in = Resources.getResourceAsStream(resource);
+                // 根据配置文件构建SqlSessionFactory对象
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
             } catch (IOException e) {
                 e.printStackTrace();
