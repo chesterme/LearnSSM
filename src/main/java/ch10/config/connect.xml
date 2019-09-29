@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context>
+    <!--
+     name：JNDI名称，
+     url：数据库jdbc连接，
+     username：用户名，
+     password：数据库密码
+     -->
+    <Resources name="jdbc/ssm"
+               auth="Container"
+               type="javax.sql.DataSource"
+               driverClassName="com.mysql.cj.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/ssm?characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"
+               password="123456"/>
+</Context>
