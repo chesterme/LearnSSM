@@ -13,6 +13,12 @@ public class Role {
     @Value("高级项目经理")
     private String note;
 
+    public Role(String roleName, String note){
+        this.id = 0L;
+        this.roleName = roleName;
+        this.note = note;
+    }
+
     public Role(Long id, String roleName, String note) {
         this.id = id;
         this.roleName = roleName;
