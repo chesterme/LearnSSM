@@ -8,6 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
  */
 
 //@ComponentScan(basePackageClasses = {Role.class, RoleService.class})
-@ComponentScan(basePackages = {"ch10.pojo", "ch10.service"})
+@ComponentScan(basePackages = {"ch10.pojo", "ch10.service", "ch10.controller"})
 public class PojoConfig {
 }
