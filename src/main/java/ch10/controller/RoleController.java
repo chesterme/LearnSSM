@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class RoleController {
 
     @Autowired
-    @Qualifier("roleService3")
+    @Qualifier("roleServiceImpl3")
     private RoleService roleService = null;
 
     public void printRole(Role role){

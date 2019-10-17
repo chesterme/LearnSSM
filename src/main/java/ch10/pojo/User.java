@@ -1,5 +1,8 @@
 package ch10.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component("user")
 public class User {
 
     private String name;

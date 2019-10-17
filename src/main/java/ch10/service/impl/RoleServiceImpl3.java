@@ -5,7 +5,7 @@ import ch10.service.RoleService;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("roleServiceImpl3")
 @Primary
 public class RoleServiceImpl3 implements RoleService {
 
