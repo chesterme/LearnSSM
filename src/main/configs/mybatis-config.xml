@@ -60,5 +60,7 @@
         <mapper resource="ch04/mapper/UserMapper.xml"/>
         <mapper resource="ch04/mapper/FileMapper.xml"/>
         <package name="ch05.mapper"/>
+        <package name="ch13.mapper"/>
+        <package name="ch12.mapper"/>
     </mappers>
 </configuration>

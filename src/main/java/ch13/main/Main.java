@@ -16,13 +16,13 @@ public class Main {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("ch13/config/spring-config.xml");
 
-        PersonService personService = context.getBean(PersonServiceImpl.class);
+        PersonService personService = context.getBean(PersonService.class);
         personService.print();
 
-        PrintService printService = context.getBean(PrintServiceImpl.class);
+        PrintService printService = context.getBean(PrintService.class);
         printService.print();
 
-        RoleService roleService = context.getBean(RoleServiceImpl.class);
+        RoleService roleService = context.getBean(RoleService.class);
         Role role = new Role("name_test", "note_test");
         roleService.insertRole(role);
         System.out.println("after insert: " + role);

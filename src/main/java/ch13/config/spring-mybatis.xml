@@ -17,7 +17,7 @@
         <property name="maxWaitMillis" value="10000"/>
     </bean>
 
-    <!-- 配置SalSessionFactoryBean -->
+    <!-- 集成MyBatis,配置SalSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 配置数据源 -->
         <property name="dataSource" ref="dataSource"/>
@@ -25,7 +25,7 @@
         <property name="configLocation" value="classpath:./ch13/config/mybatis-config.xml"/>
     </bean>
 
-    <!-- 配置MapperScannerConfigurer -->
+    <!-- 配置MapperScannerConfigurer，由Spring来管理对应的mapper对象 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 指定扫描的基类 -->
         <property name="basePackage" value="ch13.mapper"/>
