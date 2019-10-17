@@ -9,14 +9,15 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@Configuration
-@ComponentScan("ch13.*")
-// 使用事务驱动管理器
-@EnableTransactionManagement
+//@Configuration
+//@ComponentScan("ch13.*")
+//// 使用事务驱动管理器
+//@EnableTransactionManagement
 public class JavaConfig implements TransactionManagementConfigurer {
 
     // 数据源

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 指定组件扫描基类 -->
+    <context:component-scan base-package="ch13.pojo, ch13.service, ch13.mapper"/>
+
+    <!-- 引入其他配置文件 -->
+    <import resource="classpath*:./ch13/config/spring-mybatis.xml"/>
+    <!-- 引入事务设置之后，会出现找不到bean的情况 -->
+<!--    <import resource="classpath*:./ch13/config/transaction-config.xml"/>-->
+</beans>

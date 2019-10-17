@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 设置 -->
+    <settings>
+        <!-- 是否选择延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 控制是否采用层级加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 允许JDBC支持生成的键。需要适当的驱动。如果设置为true，则这个设置强制生辰的键被使用，尽管一些驱动拒绝兼容但仍然有效 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 配置默认的执行器 -->
+        <setting name="defaultExecutorType" value="REUSE"/>
+        <!-- 设置超时时间 -->
+        <setting name="defaultStatementTimeout" value="25000"/>
+    </settings>
+    <typeAliases>
+        <!-- 别名 -->
+        <typeAlias alias="role" type="ch10.pojo.Role"/>
+    </typeAliases>
+
+    <!-- 映射文件 -->
+    <mappers>
+        <package name="ch13.mapper"/>
+    </mappers>
+</configuration>
