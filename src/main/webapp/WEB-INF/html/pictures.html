@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>picture bar</title>
+    <style>
+        img{
+            border-width: 0;
+            margin: 5px;
+            max-width: 20%;
+        }
+    </style>
+</head>
+<body>
+<div id="pictureBar"></div>
+<script>
+    window.onload = initAll;
+    var xhr = false;
+
+    function initAll(){
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }
+        else{
+            if(window.ActiveXObject){
+                try{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }catch(e){}
+            }
+        }
+
+        if(xhr){
+            xhr.onreadystatechange = showPicture;
+            xhr.open("GET", "getPictures.do?filename=pictures.xml", true);
+            xhr.send();
+        }
+        else{
+            alert("Sorry, but I couldn't create an XMLHttpRequest");
+        }
+    }
+
+    function showPicture(){
+        var tempDiv = document.createElement("div");
+        var tempText = document.createElement("div");
+
+        if(xhr.readyState == 4){
+            if(xhr.status == 200){
+
+                if(xhr.responseXML){
+                    var allImages = xhr.responseXML.getElementsByTagName("picture");
+                    for(var i = 0; i < allImages.length; i++){
+
+                        var tempNode = document.createElement("img");
+                        var testLink = allImages[i].getElementsByTagName("link")[0];
+                        console.log(testLink.innerHTML);
+                        var testTitle = allImages[i].getElementsByTagName("title")[0];
+                        console.log(testTitle.innerHTML);
+                        tempNode.setAttribute("src", allImages[i].getElementsByTagName("link")[0].innerHTML);
+                        tempNode.setAttribute("title", allImages[i].getElementsByTagName("title")[0].innerHTML);
+                        document.getElementById("pictureBar").appendChild(tempNode);
+                    }
+                }
+                else{
+                    alert("There was a problem with the request " + xhr.status);
+                }
+            }
+        }
+    }
+
+    function getPixVal(inVal){
+        return (inVal.textContent) ? inVal.textContent : inVal.text;
+    }
+</script>
+</body>
+</html>
