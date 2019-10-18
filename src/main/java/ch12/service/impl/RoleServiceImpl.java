@@ -1,6 +1,7 @@
 package ch12.service.impl;
 
 import ch10.pojo.Role;
+import ch10.pojo.Role;
 import ch12.service.RoleService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

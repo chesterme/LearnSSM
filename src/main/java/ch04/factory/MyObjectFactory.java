@@ -3,7 +3,6 @@ package ch04.factory;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.log4j.Logger;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
 

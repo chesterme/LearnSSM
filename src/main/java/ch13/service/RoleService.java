@@ -1,7 +1,7 @@
 package ch13.service;
 
 import ch10.pojo.Role;
-import org.springframework.stereotype.Component;
+import ch10.pojo.Role;
 
 //@Component
 public interface RoleService {

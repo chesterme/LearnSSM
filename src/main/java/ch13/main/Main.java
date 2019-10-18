@@ -1,12 +1,10 @@
 package ch13.main;
 
 import ch10.pojo.Role;
+import ch10.pojo.Role;
 import ch13.service.PersonService;
 import ch13.service.PrintService;
 import ch13.service.RoleService;
-import ch13.service.impl.PersonServiceImpl;
-import ch13.service.impl.PrintServiceImpl;
-import ch13.service.impl.RoleServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

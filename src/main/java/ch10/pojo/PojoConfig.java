@@ -1,6 +1,5 @@
 package ch10.pojo;
 
-import ch10.service.RoleService;
 import org.springframework.context.annotation.ComponentScan;
 
 /**

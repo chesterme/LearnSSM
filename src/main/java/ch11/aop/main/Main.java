@@ -1,9 +1,9 @@
 package ch11.aop.main;
 
 import ch10.pojo.Role;
+import ch10.pojo.Role;
 import ch11.aop.config.AopConfig;
 import ch11.aop.service.RoleService;
-import ch11.game.service.impl.RoleServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

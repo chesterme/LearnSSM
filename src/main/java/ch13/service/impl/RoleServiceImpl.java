@@ -1,10 +1,10 @@
 package ch13.service.impl;
 
 import ch10.pojo.Role;
+import ch10.pojo.Role;
 import ch13.service.RoleService;
 import ch13.mapper.RoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;

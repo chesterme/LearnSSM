@@ -1,5 +1,8 @@
 package ch12.mapper;
 
+import ch05.bean.PageParams;
+import ch05.bean.RoleParams;
+import ch10.pojo.Role;
 import ch10.pojo.Role;
 import ch05.bean.PageParams;
 import ch05.bean.RoleParams;

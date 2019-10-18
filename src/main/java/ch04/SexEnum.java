@@ -1,7 +1,5 @@
 package ch04;
 
-import java.io.Serializable;
-
 /**
  * 性别枚举类
  */

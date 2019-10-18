@@ -1,11 +1,10 @@
 package ch04.main;
 
+import ch04.mapper.FileMapper;
+import ch04.pojo.TestFile;
 import ch03.utils.SqlSessionFactoryUtils;
 import ch04.mapper.FileMapper;
-import ch04.mapper.UserMapper;
 import ch04.pojo.TestFile;
-import ch04.pojo.User;
-import com.sun.org.apache.bcel.internal.generic.IFLE;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 

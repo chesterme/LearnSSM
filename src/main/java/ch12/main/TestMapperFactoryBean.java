@@ -1,6 +1,7 @@
 package ch12.main;
 
 import ch10.pojo.Role;
+import ch10.pojo.Role;
 import ch12.mapper.RoleMapper;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;

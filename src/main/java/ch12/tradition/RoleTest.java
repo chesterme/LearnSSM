@@ -1,6 +1,7 @@
 package ch12.tradition;
 
 import ch10.pojo.Role;
+import ch10.pojo.Role;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
