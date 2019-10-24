@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>role</title>
+</head>
+<body>
+    <form id="form">
+        <p>
+            <label for="role_name">enter role name: </label>
+            <input name="role_name" type="text" id="role_name"/>
+        </p>
+        <p>
+            <label for="note">enter note: </label>
+            <input name="note" type="text" id="note"/>
+        </p>
+        <p>
+            <input id="submit" type="submit" value="submit">
+        </p>
+    </form>
+    <div id="role"></div>
+
+    <iframe name="richedit" style="height: 200px; width: 200px;" src="blank.do"></iframe>
+    <script>
+        var xhr = false;
+        window.onload = initAll();
+
+        function initAll(){
+            frames["richedit"].document.designMode = "on";
+
+            var formNode = document.getElementById("form");
+            var submitNode = document.getElementById("submit");
+            submitNode.onclick = function(){
+                event.preventDefault();
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }
+                else{
+                    if(window.ActiveXObject){
+                        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                }
+
+                if(xhr){
+                    var result = serialize(formNode);
+                    xhr.open("GET", "handleRole.do?"+result, true);
+                    xhr.onreadystatechange = showMessage;
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send(null);
+                }
+            }
+        }
+
+        function showMessage(){
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    document.getElementById("role").innerHTML = xhr.responseText;
+                }
+            }
+        }
+
+        function serialize(formNode){
+            var result = [];
+
+            // 遍历表单中的所有节点
+            for(var i = 0, elementLen = formNode.elements.length; i < elementLen; i++){
+                var element = formNode.elements[i];
+                if(element.type != "submit"){
+                    result.push(encodeURIComponent(element.name) + "=" + encodeURIComponent(element.value));
+                }
+            }
+
+            return result.join("&");
+        }
+    </script>
+</body>
+</html>

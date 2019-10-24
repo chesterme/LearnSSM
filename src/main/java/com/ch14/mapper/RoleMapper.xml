@@ -24,4 +24,18 @@
         delete from t_role
         where id = #{id}
     </delete>
+
+    <resultMap id="roleMap" type="ch10.pojo.Role">
+        <id property="id" column="id"/>
+        <result property="roleName" column="role_name"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+    <select id="findRoles" parameterType="com.ch14.pojo.RoleParams" resultMap="roleMap">
+        select id, role_name, note
+        from t_role
+        where role_name = #{roleName}
+        and note = #{note}
+        limit #{pageParams.start}, #{pageParams.limit}
+    </select>
 </mapper>

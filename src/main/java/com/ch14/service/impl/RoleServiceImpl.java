@@ -2,12 +2,15 @@ package com.ch14.service.impl;
 
 import ch10.pojo.Role;
 import com.ch14.mapper.RoleMapper;
+import com.ch14.pojo.RoleParams;
 import com.ch14.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Component
 public class RoleServiceImpl implements RoleService {
@@ -43,4 +46,9 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.getById(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, timeout = 3)
+    @Override
+    public List<Role> findRoles(RoleParams roleParams) {
+        return roleMapper.findRoles(roleParams);
+    }
 }

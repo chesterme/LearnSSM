@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>random picture</title>
+    <style>
+        img{
+            border-width: 0;
+            margin: 5px;
+            max-width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="pictureBar">
+        <img id="picture"/>
+    </div>
+    <script>
+        var xhr = false;
+        window.onload = initAll();
+
+        function initAll(){
+            if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+            }
+            else{
+                if(window.ActiveXObject){
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+            if(xhr){
+                getPix();
+            }
+            else{
+                alert("Sorry, but I couldn't create an XMLHttpRequest");
+            }
+        }
+
+        function getPix(){
+            xhr.onreadystatechange = showPicture;
+            xhr.open("GET", "getPictures.do?filename=pictures.xml", true);
+            xhr.send();
+            setTimeout(getPix, 5 * 1000);
+        }
+
+        function showPicture(){
+            var tempImg = document.getElementById("picture");
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    var allImages = xhr.responseXML.getElementsByTagName("picture");
+                    var randomImg = Math.floor(Math.random() * allImages.length);
+
+                    tempImg.setAttribute("src", allImages[randomImg].getElementsByTagName("link")[0].innerHTML);
+                    tempImg.setAttribute("title", allImages[randomImg].getElementsByTagName("title")[0].innerHTML);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

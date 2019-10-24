@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+    <form id="form" method="post">
+        <table>
+            <tr>
+                <td>角色名称：</td>
+                <td><input name="roleName" type="text" value=""/> </td>
+            </tr>
+            <tr>
+                <td>备注: </td>
+                <td><input name="note" type="text" value=""/> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="submit" type="submit" value="提交"/> </td>
+            </tr>
+        </table>
+    </form>
+    <div id="response"></div>
+    <script>
+        window.onload = initAll();
+
+        function initAll(){
+            var formNode = document.getElementById("form");
+            var submitNode = document.getElementById("submit");
+
+            submitNode.onclick = handleSubmit;
+
+            function handleSubmit(){
+                event.preventDefault();
+                var xhr = false;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }
+                else{
+                    if(window.ActiveXObject){
+                        xhr = new ActiveXObject("Microsoft IE");
+                    }
+                }
+
+                if(formNode.method == "get" || formNode.method == "GET"){
+                    var params = "";
+                    for(let i = 0; i < formNode.elements.length; i++){
+                        if(formNode.elements[i].type != "submit"){
+                            if(formNode.elements[i].name != null && formNode.elements[i].value != null){
+                                params += (formNode.elements[i].name + "=" + formNode.elements[i].value + "&");
+                            }
+                        }
+                    }
+                    console.log(params);
+
+                    // get请求
+                    var uri = encodeURI("commonParamPojo1.do?" + params);
+                    if(xhr){
+                        xhr.open("get", uri, false);
+                        xhr.onreadystatechange = handleResponse;
+                        xhr.send(null);
+                    }
+                }
+
+                else if(formNode.method == "POST" || formNode.method == "post"){
+                    function Param(name, value){
+                        this.name = name;
+                        this.value = value;
+                    }
+
+                    var params = [];
+                    for(let i = 0; i < formNode.elements.length; i++){
+                        if(formNode.elements[i].type != "submit"){
+                            params.push(new Param(formNode.elements[i].name, formNode.elements[i].value))
+                        }
+                    }
+                    console.log(JSON.stringify(params));
+
+                    if(xhr){
+                        xhr.open("post", "commonParamPojo2.do", false);
+                        xhr.setRequestHeader("Content-Type", "application/json;charset=utf8");
+                        xhr.onreadystatechange = handleResponse;
+                        xhr.send(JSON.stringify(params));
+                    }
+                }
+
+
+                function handleResponse(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            if(xhr.responseText){
+                                document.getElementById("response").innerHTML = xhr.responseText;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>
