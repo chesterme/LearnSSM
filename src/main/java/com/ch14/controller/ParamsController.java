@@ -51,4 +51,13 @@ public class ParamsController {
         return mv;
     }
 
+    @RequestMapping("/commonParamPojo3")
+    public ModelAndView commonParamPojo3(@RequestBody RoleParams roleParams){
+        System.out.println("roleName => " + roleParams.getRoleName());
+        System.out.println("note => " + roleParams.getNote());
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
+
 }
