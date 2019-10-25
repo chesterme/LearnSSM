@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show role</title>
+</head>
+<body>
+    <form id="form">
+        <table>
+            <tr>
+                <td>产品编号：</td>
+                <td><input name="productId" type="text"/> </td>
+            </tr>
+            <tr>
+                <td>用户编号：</td>
+                <td><input name="userId" type="text"/> </td>
+            </tr>
+            <tr>
+                <td>交易日期：</td>
+                <td><input name="date" type="date"/></td>
+            </tr>
+            <tr>
+                <td>价格：</td>
+                <td><input name="price" type="text"/> </td>
+            </tr>
+            <tr>
+                <td>数量：</td>
+                <td><input name="quantity" type="text"/> </td>
+            </tr>
+            <tr>
+                <td>交易金额：</td>
+                <td><input name="amount" type="text"/> </td>
+            </tr>
+            <tr>
+                <td>用户邮件：</td>
+                <td><input name="email" type="email"/> </td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td><textarea name="note" cols="20" rows="5"></textarea> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="submit" type="submit" value="提交"/> </td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="response"></div>
+    <script>
+        window.onload = initAll;
+
+        function initAll(){
+            var formNode = document.getElementById("form");
+            var submitNode = document.getElementById("submit");
+
+            submitNode.onclick = handleClick;
+
+            function handleClick(){
+                event.preventDefault();
+
+                // 收集表单数据
+                var data = {};
+                for(let i = 0; i < formNode.elements.length; i++){
+                    if(formNode.elements[i].type != "submit"){
+                        data[formNode.elements[i].name] = formNode.elements[i].value;
+                    }
+                }
+                console.log(data);
+                console.log(JSON.stringify(data));
+
+                // 建立ajax请求
+                var xhr = false;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }
+                else{
+                    if(window.ActiveXObject){
+                        xhr = new ActiveXObject("Microsoft IE");
+                    }
+                }
+
+                if(xhr){
+                    xhr.open("post", "annotation.do", false);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = handleResponse;
+                    xhr.send(JSON.stringify(data));
+                }
+
+                function handleResponse(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        if(xhr.responseText){
+                            document.getElementById("response").innerHTML = xhr.responseText;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

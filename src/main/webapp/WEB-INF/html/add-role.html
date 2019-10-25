@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add role</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="form">
+        <table>
+            <tr>
+                <td>角色名称：</td>
+                <td><input name="roleName" type="text"/></td>
+            </tr>
+            <tr>
+                <td>备注: </td>
+                <td><input name="note" type="text"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="submit" type="submit" value="提交"/> </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        $(document).ready(function(){
+            $("#submit").click(function(){
+                event.preventDefault();
+                var str = $("#form").serialize();
+                console.log(str);
+                $.post({
+                    url: "addRole2.do",
+                    data: str,
+                    success: function(result){
+                        console.log(result);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

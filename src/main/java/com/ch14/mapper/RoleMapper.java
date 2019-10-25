@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface RoleMapper {
     int insertRole(Role role);
-    void deleteById(long id);
+    int deleteById(long id);
     void update(Role role);
     Role getById(long id);
     List<Role> findRoles(RoleParams roleParams);

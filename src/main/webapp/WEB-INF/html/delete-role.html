@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delelte role</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+           // 删除角色的数组
+           var idList = [1,2,3,4];
+           $.post({
+               url: "deleteRoles.do",
+               data: JSON.stringify(idList),
+               contentType: "application/json",
+               success: function(result){
+
+               }
+           });
+        });
+    </script>
+</body>
+</html>

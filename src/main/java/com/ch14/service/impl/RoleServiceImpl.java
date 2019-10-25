@@ -30,8 +30,8 @@ public class RoleServiceImpl implements RoleService {
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, timeout = 3)
     @Override
-    public void deleteById(long id) {
-        roleMapper.deleteById(id);
+    public int deleteById(long id) {
+        return roleMapper.deleteById(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, timeout = 3)
@@ -50,5 +50,15 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<Role> findRoles(RoleParams roleParams) {
         return roleMapper.findRoles(roleParams);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, timeout = 3)
+    @Override
+    public int insertRoles(List<Role> roles) {
+        int result = 0;
+        for(int i = 0; i < roles.size(); i++){
+            result += roleMapper.insertRole(roles.get(i));
+        }
+        return result;
     }
 }

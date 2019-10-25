@@ -22,6 +22,22 @@
     <!-- 定义扫描装载的包 -->
     <context:component-scan base-package="com.*"/>
 
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/role/*.do"/>
+            <bean class="com.ch14.interceptor.RoleInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/role/*.do"/>
+            <bean class="com.ch14.interceptor.RoleInterceptor1"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/role/*.do"/>
+            <bean class="com.ch14.interceptor.RoleInterceptor2"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 数据库连接池 -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
